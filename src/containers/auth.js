@@ -10,43 +10,14 @@ import {
   Image,
   ActivityIndicatorIOS
 } from 'react-native'
-import AuthActions from '../actions/auth'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { AuthStyle } from '../styles/styles';
+import {
+  login
+} from '../actions/authActions'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 100
-  },
-  instructions: {
-
-  },
-  input: {
-    height: 50,
-    borderColor: 'transparent',
-    borderWidth: 1,
-    backgroundColor: '#fff',
-    margin: 20,
-    padding: 10
-  },
-  splashImage: {
-    position: 'absolute',
-    top: -300,
-    left: 0,
-    width: 375,
-    resizeMode: Image.resizeMode.contain,
-    justifyContent: 'center'
-  },
-  submit: {
-    marginTop: 280,
-    alignSelf: 'center',
-  },
-  submitText: {
-    fontSize: 20
-  }
-});
-
-class Login extends Component {
+class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,9 +34,10 @@ class Login extends Component {
       password: this.state.password
     };
     if (this.props.form === "login") {
-      AuthActions.login(user);
+      debugger;
+      this.props.login(user)
     } else if (this.props.form === "signup") {
-      AuthActions.signup(user);
+      this.props.signup(user);
     }
   }
 
@@ -76,6 +48,8 @@ class Login extends Component {
 
     const submitText = this.props.form === "login" ?
           ( "Log-in" ) : ("Signup")
+
+    const styles = AuthStyle;
 
     return(
       <View style={styles.container}>
@@ -96,16 +70,32 @@ class Login extends Component {
                 value={this.state.password}
                 placeholder="Password"
               />
-        <TouchableHighlight style={styles.submit}
-          onPress={this._handleSubmit.bind(this)}>
+        <Text style={styles.submit}
+              onPress={this._handleSubmit.bind(this)}>
           <Text style={styles.submitText}>
             {submitText}
           </Text>
-        </TouchableHighlight>
+        </Text>
         {spinner}
       </View>
     )
   }
 }
 
-module.exports = Login;
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: bindActionCreators(login, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth);

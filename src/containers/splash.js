@@ -9,7 +9,6 @@ import {
   Image
 } from 'react-native'
 import { Actions } from 'react-native-router-flux';
-import Login from './login'
 
 const styles = StyleSheet.create({
   container: {
@@ -51,12 +50,6 @@ const styles = StyleSheet.create({
 
 
 class Splash extends Component {
-  goSignup(){
-    console.log("GOING TO SIGNUP!")
-    Actions.auth;
-
-  }
-
   render(){
     return (
       <View style={styles.container}>

@@ -4,7 +4,7 @@ import {
   View,
   Text
 } from 'react-native'
-import Login from './login';
+import Auth from './auth';
 import Splash from './splash';
 
 
@@ -13,8 +13,8 @@ export default class App extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="login" component={Login} title="Log-in"/>
-          <Scene key="signup" component={Login} title="Signup"/>
+          <Scene key="login" component={Auth} title="Log-in"/>
+          <Scene key="signup" component={Auth} title="Signup"/>
           <Scene key="splash" component={Splash} title="Welcome" initial={true}/>
         </Scene>
       </Router>

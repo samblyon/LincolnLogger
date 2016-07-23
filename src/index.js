@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import createLogger from 'redux-logger';
 import reducer from './reducers/index'
 
+const logger = createLogger();
+
 const middlewares = [
-  thunk,
-  logger
+  logger,
+  thunk
 ];
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
-const store = createStoreWithMiddleware(reducer);
+const store = window.store = createStoreWithMiddleware(reducer);
 
 import App from './containers/app';
 export default class Main extends Component {
