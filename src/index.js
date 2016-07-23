@@ -8,8 +8,8 @@ import reducer from './reducers/index'
 const logger = createLogger();
 
 const middlewares = [
-  logger,
-  thunk
+  thunk,
+  logger
 ];
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);

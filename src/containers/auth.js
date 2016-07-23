@@ -1,6 +1,13 @@
 'use strict'
 
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { AuthStyle } from '../styles/authStyle';
+import {
+  login,
+  signup
+} from '../actions/authActions'
 import {
   View,
   Text,
@@ -10,12 +17,7 @@ import {
   Image,
   ActivityIndicatorIOS
 } from 'react-native'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { AuthStyle } from '../styles/styles';
-import {
-  login
-} from '../actions/authActions'
+
 
 class Auth extends Component {
   constructor(props) {
@@ -23,28 +25,32 @@ class Auth extends Component {
     this.state = {
       username: "",
       password: "",
-      submitting: false
     };
   }
 
   _handleSubmit(){
-    this.setState({ submitting: true });
     const user = {
       username: this.state.username,
       password: this.state.password
     };
     if (this.props.form === "login") {
-      debugger;
-      this.props.login(user)
+      this.props.actions.login(user)
     } else if (this.props.form === "signup") {
-      this.props.signup(user);
+      this.props.actions.signup(user);
     }
   }
 
   render(){
-    const spinner = this.state.submitting ?
-          ( <ActivityIndicatorIOS size='small' />) :
-          ( <View />)
+    const auth = this.props.auth;
+    const errors = auth.errors || {};
+    const submitting = auth.submitting;
+
+    const loginErrors = this.props.form === "login" ?
+          ( <Text>{errors.login}</Text> ) :
+          ( <View/> )
+    const spinner = auth.submitting ?
+          ( <ActivityIndicatorIOS size='small' /> ) :
+          ( <View /> )
 
     const submitText = this.props.form === "login" ?
           ( "Log-in" ) : ("Signup")
@@ -55,6 +61,7 @@ class Auth extends Component {
       <View style={styles.container}>
         <Image source={require('../assets/splash.png')}
           style={styles.splashImage}/>
+        {loginErrors}
         <TextInput
                 style={styles.input}
                 autoCapitalize="none"
@@ -91,7 +98,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: bindActionCreators(login, dispatch)
+    actions: bindActionCreators({login, signup}, dispatch)
   }
 }
 

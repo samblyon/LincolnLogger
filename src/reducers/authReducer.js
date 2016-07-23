@@ -1,20 +1,28 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {};
+const initialState = {
+  submitting: false
+};
 
 export default function auth(state = initialState, action = {}) {
   switch (action.type) {
-    case 'TEST':
-      return {
-        user: action.user.username
-      };
+    case types.AUTH_REQ_STARTED:
+      return Object.assign({}, state, {
+        submitting: true
+      });
     case types.LOGIN_RESULT:
       return {
         username: action.auth.username,
-        token: action.auth.session_token
+        token: action.auth.session_token,
+        submitting: false
+      }
+    case types.LOGIN_FAILED:
+      return {
+        errors: action.errors,
+        submitting: false
       }
     case types.LOGOUT:
-      return {}
+      return initialState;
     default:
       return state
   }
