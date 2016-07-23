@@ -1,39 +1,28 @@
-import React, { Component } from 'react-native';
-import {
-  NavigatorIOS,
-} from 'react-native';
+import React, { Component } from 'react';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import createStore from './createStore';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import reducer from './reducers/index'
 
-const store = createStore();
+const middlewares = [
+  thunk,
+  logger
+];
 
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
+const store = createStoreWithMiddleware(reducer);
 
-const Splash = require('./containers/splash');
-
+import App from './containers/app';
 export default class Main extends Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
       <Provider store={store}>
-        <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          component: Splash,
-          title: "Welcome"
-        }}
-        />
+        <App />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
-    fontSize: 30,
-    margin: 80
-  },
-  container: {
-    flex: 1
-  }
-});

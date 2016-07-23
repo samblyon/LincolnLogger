@@ -1,21 +1,23 @@
-import React, { Component } from 'react-native';
-import { createStore, applyMiddleware, combineReducers} from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import React, { Component } from 'react';
+import {Scene, Router} from 'react-native-router-flux';
+import {
+  View,
+  Text
+} from 'react-native'
+import Login from './login';
+import Splash from './splash';
 
-import * as reducers from '../reducers';
-import LoggerApp from './loggerApp';
-
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
 
 export default class App extends Component {
   render(){
     return (
-      <Provider store={store}>
-        <LoggerApp />
-      </Provider>
+      <Router>
+        <Scene key="root">
+          <Scene key="login" component={Login} title="Log-in"/>
+          <Scene key="signup" component={Login} title="Signup"/>
+          <Scene key="splash" component={Splash} title="Welcome" initial={true}/>
+        </Scene>
+      </Router>
     );
   }
 }
