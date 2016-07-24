@@ -16,7 +16,7 @@ import {
 function handleErrors(response) {
   if (!response.ok) {
     const error = new Error(response.statusText);
-    error.response = response;
+    error.response = response
     throw error;
   }
   return response;
@@ -39,7 +39,7 @@ export const login = (user) => {
         user: user
       })
     })
-    .then(response => handleErrors(response))
+    .then(json => handleErrors(json))
     .then(response => response.json())
     .then(responseJson => {
       dispatch({
@@ -84,10 +84,13 @@ export const signup = (user) => {
       Actions.home();
     })
     .catch((error) => {
-      dispatch({
-        type: SIGNUP_FAILED,
-        errors: error
-      })
+      error.response.json()
+        .then(json => {
+          dispatch({
+            type: SIGNUP_FAILED,
+            errors: { signup: json.errors }
+          })
+        })
     });
   }
 }

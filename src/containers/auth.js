@@ -44,10 +44,28 @@ class Auth extends Component {
     const auth = this.props.auth;
     const errors = auth.errors || {};
     const submitting = auth.submitting;
+    const form = this.props.form;
 
-    const loginErrors = this.props.form === "login" ?
+    const loginErrors = form === "login" ?
           ( <Text>{errors.login}</Text> ) :
           ( <View/> )
+
+    const signupErrors = (form === "signup" && errors.signup) ?
+            errors.signup :
+            {}
+
+    const usernameErrors = signupErrors.username ?
+          ( <Text>
+              Username {signupErrors.username}
+            </Text>) :
+          (<View />)
+
+    const passwordErrors = signupErrors.password ?
+          ( <Text>
+              Password {signupErrors.password}
+            </Text>) :
+          (<View />)
+
     const spinner = auth.submitting ?
           ( <ActivityIndicatorIOS size='small' /> ) :
           ( <View /> )
@@ -62,6 +80,7 @@ class Auth extends Component {
         <Image source={require('../assets/splash.png')}
           style={styles.splashImage}/>
         {loginErrors}
+        {usernameErrors}
         <TextInput
                 style={styles.input}
                 autoCapitalize="none"
@@ -69,6 +88,7 @@ class Auth extends Component {
                 value={this.state.username}
                 placeholder="Username"
               />
+        {passwordErrors}
         <TextInput
                 style={styles.input}
                 autoCapitalize="none"
@@ -98,7 +118,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators({login, signup}, dispatch)
+    actions: bindActionCreators({
+      login,
+      signup
+    }, dispatch)
   }
 }
 

@@ -21,6 +21,11 @@ export default function auth(state = initialState, action = {}) {
         errors: action.errors,
         submitting: false
       }
+    case types.SIGNUP_FAILED:
+      return {
+        errors: action.errors,
+        submitting: false
+      }
     case types.LOGOUT:
       return initialState;
     default:
