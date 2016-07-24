@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Image
 } from 'react-native'
-import Login from './login'
+import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     top: -300,
     left: 0,
     width: 375,
-    // flex: 1,
     resizeMode: Image.resizeMode.contain,
     justifyContent: 'center'
   }
@@ -51,24 +50,6 @@ const styles = StyleSheet.create({
 
 
 class Splash extends Component {
-  goLogin(){
-    console.log("GOING TO LOGIN!");
-    this.props.navigator.push({
-      title: "Log-in",
-      component: Login,
-      passProps: { form: 'login' }
-    });
-  }
-
-  goSignup(){
-    console.log("GOING TO SIGNUP!")
-    this.props.navigator.push({
-      title: "Signup",
-      component: Login,
-      passProps: { form: 'signup' }
-    });
-  }
-
   render(){
     return (
       <View style={styles.container}>
@@ -79,10 +60,14 @@ class Splash extends Component {
           <Text style={styles.welcome}>
             Welcome to {"\n"}LincolnLogger
           </Text>
-          <Text style={styles.login} onPress={this.goLogin.bind(this)}>
+          <Text style={styles.login} onPress={() => {
+              Actions.login({form: "login"})
+            }}>
             Log In
           </Text>
-          <Text style={styles.signup} onPress={this.goSignup.bind(this)}>
+          <Text style={styles.signup} onPress={() => {
+              Actions.signup({form: "signup"})
+            }}>
             Don't have an account? Sign Up
           </Text>
         </View>

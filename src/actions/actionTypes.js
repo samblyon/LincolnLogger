@@ -1,0 +1,12 @@
+export const AUTH_REQ_STARTED = 'AUTH_REQ_STARTED';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const LOGIN_RESULT = 'LOGIN_RESULT';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+export const SIGNUP_RESULT = 'SIGNUP_RESULT';
+export const LOGOUT = 'LOGOUT';
+export const NO_INTERNET_CONNECTION = 'NO_INTERNET_CONNECTION';
+export const ADD_LOG = 'ADD_LOG';
+export const GET_LOGS = 'GET_LOGS';
+export const RECEIVE_LOGS = 'RECEIVE_LOGS';
+export const RECEIVE_LOG = 'RECEIVE_LOG';
+export const LOADING = 'LOADING';

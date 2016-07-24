@@ -1,6 +1,18 @@
 'use strict';
 
-import React, { AppRegistry } from 'react-native';
-import Main from './src';
+import React, { Component } from 'react';
+import {
+  AppRegistry
+} from 'react-native';
 
-AppRegistry.registerComponent('LincolnLogger', () => Main);
+import Main from './src/index';
+
+class LincolnLogger extends Component {
+  render() {
+    return (
+      <Main />
+    );
+  }
+}
+
+AppRegistry.registerComponent('Project', () => LincolnLogger);
