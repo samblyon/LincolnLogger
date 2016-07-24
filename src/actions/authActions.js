@@ -1,7 +1,9 @@
 'use strict';
 import { Actions } from 'react-native-router-flux';
-const routerActions = Actions;
+import { receiveLogs } from './loggerActions';
 
+const receiveLogsFn = receiveLogs;
+const routerActions = Actions;
 const loggerApiBaseUrl = "http://lincoln-logger-api.herokuapp.com/api/"
 
 import {
@@ -24,6 +26,8 @@ function handleErrors(response) {
 
 export const login = (user) => {
   const Actions = routerActions;
+  const receiveLogs = receiveLogsFn;
+
   return (dispatch, state) => {
     dispatch({
       type: AUTH_REQ_STARTED
@@ -46,6 +50,8 @@ export const login = (user) => {
         type: LOGIN_RESULT,
         auth: responseJson
       });
+      // debugger;
+      receiveLogs(dispatch, responseJson.logs);
       Actions.home();
     })
     .catch((error) => {

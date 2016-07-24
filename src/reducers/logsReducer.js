@@ -3,12 +3,12 @@ const initialState = [];
 
 export default function logs(state = initialState, action = {}) {
   switch (action.type) {
-    case types.ADD_LOG:
+    case types.LOG_RECEIVED:
       return [
         ...state,
         action.log
       ];
-    case types.RECEIVE_LOGS:
+    case types.LOGS_RECEIVED:
       return action.logs
     default:
       return state
