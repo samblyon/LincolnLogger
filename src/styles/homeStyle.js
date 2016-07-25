@@ -18,10 +18,12 @@ export const HomeStyle = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "transparent"
   },
+  stats: {
+    paddingTop: 380
+  },
   logButton: {
-    position: 'absolute',
-    bottom: 120,
-    left: 100,
+    marginTop: -30,
+    alignSelf: 'center',
     height: 0,
     backgroundColor: 'white'
   }

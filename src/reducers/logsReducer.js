@@ -9,7 +9,9 @@ export default function logs(state = initialState, action = {}) {
         action.log
       ];
     case types.LOGS_RECEIVED:
-      return action.logs
+      return action.logs;
+    case types.RESET_LOGS:
+      return initialState;
     default:
       return state
   }

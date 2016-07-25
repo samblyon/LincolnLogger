@@ -12,7 +12,7 @@ import {
   LOGIN_RESULT,
   SIGNUP_FAILED,
   SIGNUP_RESULT,
-  NO_INTERNET_CONNECTION
+  RESET_LOGS
 } from './actionTypes'
 
 function handleErrors(response) {
@@ -59,7 +59,8 @@ export const login = (user) => {
         type: LOGIN_FAILED,
         errors: { login: "Invalid username or password" }
       })
-    });
+    })
+    .done();
   }
 }
 
@@ -87,9 +88,13 @@ export const signup = (user) => {
         type: LOGIN_RESULT,
         auth: responseJson
       });
+      dispatch({
+        type: RESET_LOGS
+      });
       Actions.home();
     })
     .catch((error) => {
+      debugger
       error.response.json()
         .then(json => {
           dispatch({
@@ -97,6 +102,7 @@ export const signup = (user) => {
             errors: { signup: json.errors }
           })
         })
-    });
+    })
+    .done();
   }
 }

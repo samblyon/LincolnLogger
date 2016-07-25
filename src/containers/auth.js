@@ -12,11 +12,12 @@ import {
   View,
   Text,
   TextInput,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
   Image,
   ActivityIndicatorIOS
 } from 'react-native'
+import SubmitButton from '../components/submitButton';
 
 
 class Auth extends Component {
@@ -43,11 +44,11 @@ class Auth extends Component {
   render(){
     const auth = this.props.auth;
     const errors = auth.errors || {};
-    const submitting = auth.submitting;
     const form = this.props.form;
+    const styles = AuthStyle;
 
     const loginErrors = form === "login" ?
-          ( <Text>{errors.login}</Text> ) :
+          ( <Text style={styles.errorText}>{errors.login}</Text> ) :
           ( <View/> )
 
     const signupErrors = (form === "signup" && errors.signup) ?
@@ -55,29 +56,34 @@ class Auth extends Component {
             {}
 
     const usernameErrors = signupErrors.username ?
-          ( <Text>
+          ( <Text style={styles.errorText}>
               Username {signupErrors.username}
             </Text>) :
           (<View />)
 
     const passwordErrors = signupErrors.password ?
-          ( <Text>
+          ( <Text style={styles.errorText}>
               Password {signupErrors.password}
             </Text>) :
           (<View />)
 
-    const spinner = auth.submitting ?
-          ( <ActivityIndicatorIOS size='small' /> ) :
-          ( <View /> )
-
     const submitText = this.props.form === "login" ?
           ( "Log-in" ) : ("Signup")
 
-    const styles = AuthStyle;
+    const submitButton = (
+      this.state.username.length > 0 && this.state.password.length > 0
+    ) ? (
+      <SubmitButton image={require('../assets/button.png')}
+        submitText={submitText}
+        onPress={this._handleSubmit.bind(this)}
+        loading={this.props.loading} />
+    ) : (
+      <View/>
+    )
 
     return(
       <View style={styles.container}>
-        <Image source={require('../assets/splash.png')}
+        <Image source={require('../assets/welcome.png')}
           style={styles.splashImage}/>
         {loginErrors}
         {usernameErrors}
@@ -97,13 +103,7 @@ class Auth extends Component {
                 value={this.state.password}
                 placeholder="Password"
               />
-        <Text style={styles.submit}
-              onPress={this._handleSubmit.bind(this)}>
-          <Text style={styles.submitText}>
-            {submitText}
-          </Text>
-        </Text>
-        {spinner}
+        {submitButton}
       </View>
     )
   }
@@ -112,7 +112,8 @@ class Auth extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    loading: state.loading
   };
 }
 

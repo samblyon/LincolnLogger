@@ -10,4 +10,5 @@ export const ADD_LOG = 'ADD_LOG';
 export const GET_LOGS = 'GET_LOGS';
 export const LOGS_RECEIVED = 'LOGS_RECEIVED';
 export const LOG_RECEIVED = 'LOG_RECEIVED';
+export const RESET_LOGS = 'RESET_LOGS';
 export const LOADING = 'LOADING';

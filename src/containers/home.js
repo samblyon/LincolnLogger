@@ -22,7 +22,8 @@ class Home extends Component {
     const styles = HomeStyle;
     const username = this.props.username;
     const logs = this.props.logs;
-    const cabinStage = Math.floor(this.props.logs.length / 4);
+    let cabinStage = Math.floor(this.props.logs.length / 4);
+    if (cabinStage > 10) { cabinStage = 10; }
     const cabinImages = [
       require('../assets/welcome.png'),
       require('../assets/cabin1.png'),
@@ -55,6 +56,7 @@ class Home extends Component {
           <Button
             onPressButton={this._handleLogPress.bind(this)}
             text="Log a log"
+            loading={this.props.loading}
             />
         </View>
 
@@ -67,7 +69,8 @@ const mapStateToProps = (state) => {
   return {
     username: state.auth.username,
     token: state.auth.token,
-    logs: state.logs
+    logs: state.logs,
+    loading: state.loading
   };
 }
 

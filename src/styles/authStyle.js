@@ -6,9 +6,6 @@ export const AuthStyle = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 100
   },
-  instructions: {
-
-  },
   input: {
     height: 50,
     borderColor: 'transparent',
@@ -25,11 +22,11 @@ export const AuthStyle = StyleSheet.create({
     resizeMode: Image.resizeMode.contain,
     justifyContent: 'center'
   },
-  submit: {
-    marginTop: 280,
-    alignSelf: 'center',
-  },
-  submitText: {
-    fontSize: 20
+  errorText: {
+    color: 'white',
+    fontStyle: 'italic',
+    fontSize: 16,
+    backgroundColor: 'transparent',
+    alignSelf: 'center'
   }
 });

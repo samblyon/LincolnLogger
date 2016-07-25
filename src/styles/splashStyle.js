@@ -6,26 +6,36 @@ import {
 export const SplashStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
+  },
+  logoImage: {
+    marginTop: 80,
+    alignSelf: 'center',
+    width: 170,
+    height: 120
   },
   welcome: {
-    flex: 1,
     color: 'black',
     fontSize: 30,
     alignSelf: 'center',
     textAlign: 'center',
-    marginTop: 120,
-    paddingBottom: 100
+    marginTop: -20,
+    color: 'white'
   },
-  login: {
-    flex: 1,
+  slogan: {
+    width: 280,
+    marginTop: 10,
     alignSelf: 'center',
-    color: 'black',
-    paddingTop: 290,
+    textAlign: 'center',
+    color: 'white',
     fontSize: 20
   },
+  submitButton: {
+    marginTop: -60,
+    alignSelf: 'center'
+  },
   signup: {
-    flex: 1,
+    marginTop: 20,
     alignSelf: 'center',
     color: 'black',
     fontSize: 15,

@@ -10,27 +10,33 @@ import {
   StyleSheet,
   Image
 } from 'react-native'
+import SubmitButton from '../components/submitButton';
 
 const Splash = () => {
   return (
     <View style={SplashStyle.container}>
-      <View style={SplashStyle.container}>
-        <Image source={require('../assets/splash.png')}
+        <Image source={require('../assets/welcome.png')}
           style={SplashStyle.splashImage}
           />
+        <Image source={require('../assets/log.png')}
+              style={SplashStyle.logoImage}/>
         <Text style={SplashStyle.welcome}>
           Welcome to {"\n"}LincolnLogger
         </Text>
-        <Text style={SplashStyle.login} onPress={() => {
-            Actions.login({form: "login"})
-          }}>
-          Log In
+        <Text style={SplashStyle.slogan}>
+          The gastrointestinal health tracker app you've been waiting for
         </Text>
-        <Text style={SplashStyle.signup} onPress={() => {
-            Actions.signup({form: "signup"})
-          }}>
-          Don't have an account? Sign Up
-        </Text>
+        <View style={SplashStyle.submitButton}>
+          <SubmitButton image={require('../assets/button.png')}
+            submitText="Log-in"
+            onPress={() => {
+                Actions.login({form: "login"})
+              }} />
+          <Text style={SplashStyle.signup} onPress={() => {
+              Actions.signup({form: "signup"})
+            }}>
+            Don't have an account? Sign Up
+          </Text>
       </View>
     </View>
   )
