@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import { HomeStyle } from '../styles/homeStyle'
 import { Actions } from 'react-native-router-flux';
+import { logLog } from '../actions/loggerActions';
 import Button from '../components/button';
 import Stats from '../components/stats';
 import {
@@ -13,6 +15,7 @@ import {
 class Home extends Component {
   _handleLogPress(){
     console.log("log button pressed!")
+    this.props.actions.logLog(this.props.token);
   }
 
   render(){
@@ -60,11 +63,23 @@ class Home extends Component {
   }
 }
 
-export default connect(
-  (state) => {
-    return {
-      username: state.auth.username,
-      logs: state.logs
-    }
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.username,
+    token: state.auth.token,
+    logs: state.logs
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators({
+      logLog
+    }, dispatch)
   }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Home);

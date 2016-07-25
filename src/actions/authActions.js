@@ -50,11 +50,11 @@ export const login = (user) => {
         type: LOGIN_RESULT,
         auth: responseJson
       });
-      // debugger;
       receiveLogs(dispatch, responseJson.logs);
       Actions.home();
     })
     .catch((error) => {
+      console.log(error);
       dispatch({
         type: LOGIN_FAILED,
         errors: { login: "Invalid username or password" }

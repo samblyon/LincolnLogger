@@ -6,12 +6,15 @@ import {
 import { statsStyle } from '../styles/statsStyle';
 
 function _loggingDuration(logs) {
+  if (logs.length < 1) { return 1; }
   const start = new Date(logs[0].created_at);
   const current = new Date();
   const dayInMs = 1000 * 60 * 60 * 24;
-  return Math.floor(
+  const duration = Math.floor(
     (current - start) / (dayInMs)
   );
+  if (duration < 1) { return 1; }
+  return duration;
 }
 
 class Stats extends Component {

@@ -1,4 +1,5 @@
 export const AUTH_REQ_STARTED = 'AUTH_REQ_STARTED';
+export const LOG_REQ_STARTED = 'LOG_REQ_STARTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGIN_RESULT = 'LOGIN_RESULT';
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';
