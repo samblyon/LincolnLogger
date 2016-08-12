@@ -32,12 +32,14 @@ Summary:
 
 3. Install RN binary`$ npm install -g react-native-cli`
 
-4. Run with `$ react-native start`
+4. `cd` into the project directory and run `npm install` to install all the necessary npm packages.
+
+5. Run with `$ react-native start`
 
 
 ## iOS Simulator
 
-0. `$ open ios/stopwatch.xcodeproj/` - Opens the iOS sub-project in Xcode.
+0. `$ open ios/Project.xcodeproj/` - Opens the iOS sub-project in Xcode.
 
 1. Click the "Play" button in Xcode
 
