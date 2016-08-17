@@ -40,27 +40,26 @@ class Home extends Component {
     const cabinImage = cabinImages[cabinStage];
 
     return(
-      <View style={styles.container}>
         <Image
         source={cabinImage}
-        style={styles.cabinImage} />
-        <Text style={styles.explanation}>
-          Hi {username}!
-          You have logged {this.props.logs.length} logs.
-          Good work!
-        </Text>
-        <View style={styles.stats}>
-          <Stats logs={this.props.logs} />
-        </View>
-        <View style={styles.logButton}>
-          <Button
-            onPressButton={this._handleLogPress.bind(this)}
-            text="Log a log"
-            loading={this.props.loading}
-            />
-        </View>
+        style={styles.cabinImage}>
+          <Text style={styles.explanation}>
+            Hi {username}!
+            You have logged {this.props.logs.length} logs.
+            Good work!
+          </Text>
+          <View style={styles.stats}>
+            <Stats logs={this.props.logs} />
+          </View>
+          <View style={styles.logButton}>
+            <Button
+              onPressButton={this._handleLogPress.bind(this)}
+              text="Log a log"
+              loading={this.props.loading}
+              />
+          </View>
+        </Image>
 
-      </View>
     );
   }
 }

@@ -15,17 +15,16 @@ import SubmitButton from '../components/submitButton';
 const Splash = () => {
   return (
     <View style={SplashStyle.container}>
-        <Image source={require('../assets/welcome.png')}
-          style={SplashStyle.splashImage}
-          />
-        <Image source={require('../assets/log.png')}
-              style={SplashStyle.logoImage}/>
+      <Image source={require('../assets/welcome.png')}
+        style={SplashStyle.splashImage}>
         <Text style={SplashStyle.welcome}>
           Welcome to {"\n"}LincolnLogger
         </Text>
         <Text style={SplashStyle.slogan}>
           The gastrointestinal health tracker app you've been waiting for
         </Text>
+        <Image source={require('../assets/log.png')}
+               style={SplashStyle.logoImage}/>
         <View style={SplashStyle.submitButton}>
           <SubmitButton image={require('../assets/button.png')}
             submitText="Log-in"
@@ -37,7 +36,8 @@ const Splash = () => {
             }}>
             Don't have an account? Sign Up
           </Text>
-      </View>
+        </View>
+      </Image>
     </View>
   )
 }

@@ -74,37 +74,39 @@ class Auth extends Component {
       this.state.username.length > 0 && this.state.password.length > 0
     ) ? (
       <SubmitButton image={require('../assets/button.png')}
+        style={styles.submitButton}
         submitText={submitText}
         onPress={this._handleSubmit.bind(this)}
         loading={this.props.loading} />
     ) : (
       <View/>
     )
-
     return(
-      <View style={styles.container}>
-        <Image source={require('../assets/welcome.png')}
-          style={styles.splashImage}/>
+      <Image source={require('../assets/welcome.png')}
+             style={styles.splashImage}>
         {loginErrors}
         {usernameErrors}
+        <Text style={styles.instructions}>
+          Enter Logger credentials to continue
+        </Text>
         <TextInput
-                style={styles.input}
-                autoCapitalize="none"
-                onChangeText={(username) => this.setState({username})}
-                value={this.state.username}
-                placeholder="Username"
-              />
+          style={styles.input}
+          autoCapitalize="none"
+          onChangeText={(username) => this.setState({username})}
+          value={this.state.username}
+          placeholder="Username"/>
         {passwordErrors}
         <TextInput
-                style={styles.input}
-                autoCapitalize="none"
-                secureTextEntry={true}
-                onChangeText={(password) => this.setState({password})}
-                value={this.state.password}
-                placeholder="Password"
-              />
-        {submitButton}
-      </View>
+          style={styles.input}
+          autoCapitalize="none"
+          secureTextEntry={true}
+          onChangeText={(password) => this.setState({password})}
+          value={this.state.password}
+          placeholder="Password"/>
+        <View style={styles.submitButton}>
+          {submitButton}
+        </View>
+      </Image>
     )
   }
 }

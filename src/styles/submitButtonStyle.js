@@ -2,7 +2,6 @@ import { StyleSheet, Image } from 'react-native'
 
 export const SubmitButtonStyle = StyleSheet.create({
   submit: {
-    marginTop: 240,
     alignSelf: 'center',
     backgroundColor: 'transparent',
   },

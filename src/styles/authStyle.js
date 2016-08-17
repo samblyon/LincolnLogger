@@ -1,10 +1,18 @@
 import { StyleSheet, Image } from 'react-native'
 
 export const AuthStyle = StyleSheet.create({
-  container: {
+  splashImage: {
+    paddingTop: 80,
     flex: 1,
     flexDirection: 'column',
-    paddingTop: 100
+    width: null,
+    height: null,
+    resizeMode: Image.resizeMode.contain,
+  },
+  instructions: {
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    color: 'white'
   },
   input: {
     height: 50,
@@ -14,19 +22,15 @@ export const AuthStyle = StyleSheet.create({
     margin: 20,
     padding: 10
   },
-  splashImage: {
-    position: 'absolute',
-    top: -300,
-    left: 0,
-    width: 375,
-    resizeMode: Image.resizeMode.contain,
-    justifyContent: 'center'
-  },
   errorText: {
     color: 'white',
     fontStyle: 'italic',
     fontSize: 16,
     backgroundColor: 'transparent',
     alignSelf: 'center'
+  },
+  submitButton: {
+    flex: 1,
+    marginTop: 140
   }
 });

@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "Project.app"
-               BlueprintName = "Project"
-               ReferencedContainer = "container:Project.xcodeproj">
+               BlueprintName = "Lincoln Logger"
+               ReferencedContainer = "container:Lincoln Logger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ProjectTests.xctest"
-               BlueprintName = "ProjectTests"
-               ReferencedContainer = "container:Project.xcodeproj">
+               BuildableName = "Lincoln Logger.xctest"
+               BlueprintName = "Lincoln LoggerTests"
+               ReferencedContainer = "container:Lincoln Logger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ProjectTests.xctest"
-               BlueprintName = "ProjectTests"
-               ReferencedContainer = "container:Project.xcodeproj">
+               BuildableName = "Lincoln Logger.xctest"
+               BlueprintName = "Lincoln LoggerTests"
+               ReferencedContainer = "container:Lincoln Logger.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,8 +58,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Project.app"
-            BlueprintName = "Project"
-            ReferencedContainer = "container:Project.xcodeproj">
+            BlueprintName = "Lincoln Logger"
+            ReferencedContainer = "container:Lincoln Logger.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Project.app"
-            BlueprintName = "Project"
-            ReferencedContainer = "container:Project.xcodeproj">
+            BlueprintName = "Lincoln Logger"
+            ReferencedContainer = "container:Lincoln Logger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -100,8 +100,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "Project.app"
-            BlueprintName = "Project"
-            ReferencedContainer = "container:Project.xcodeproj">
+            BlueprintName = "Lincoln Logger"
+            ReferencedContainer = "container:Lincoln Logger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

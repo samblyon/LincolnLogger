@@ -7,19 +7,19 @@ export const HomeStyle = StyleSheet.create({
     paddingTop: 100
   },
   cabinImage: {
-    position: 'absolute',
-    top: -300,
-    left: 0,
-    width: 375,
+    paddingTop: 80,
+    flex: 1,
+    flexDirection: 'column',
+    width: null,
+    height: null,
     resizeMode: Image.resizeMode.contain,
-    justifyContent: 'center'
   },
   explanation: {
     alignSelf: "center",
     backgroundColor: "transparent"
   },
   stats: {
-    paddingTop: 380
+    paddingTop: 300
   },
   logButton: {
     marginTop: -30,

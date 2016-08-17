@@ -9,29 +9,29 @@ export const SplashStyle = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   logoImage: {
-    marginTop: 80,
     alignSelf: 'center',
     width: 170,
     height: 120
   },
   welcome: {
+    marginTop: 100,
     color: 'black',
     fontSize: 30,
     alignSelf: 'center',
     textAlign: 'center',
-    marginTop: -20,
     color: 'white'
   },
   slogan: {
     width: 280,
-    marginTop: 10,
+    marginTop: 20,
     alignSelf: 'center',
     textAlign: 'center',
     color: 'white',
     fontSize: 20
   },
   submitButton: {
-    marginTop: -60,
+    flex: 1,
+    marginTop: 30,
     alignSelf: 'center'
   },
   signup: {
@@ -42,10 +42,9 @@ export const SplashStyle = StyleSheet.create({
     textDecorationLine: 'underline'
   },
   splashImage: {
-    position: 'absolute',
-    top: -300,
-    left: 0,
-    width: 375,
+    flex: 1,
+    width: null,
+    height: null,
     resizeMode: Image.resizeMode.contain,
     justifyContent: 'center'
   }
